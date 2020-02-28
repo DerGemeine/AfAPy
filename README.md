@@ -1,15 +1,15 @@
 # AfAPy
 ### AfA mit diesem Python3 Script berechnen. 
 &nbsp;
-##### Das Script ist momentan nur für Österreich gedacht, da es spezifische Regelunngen bezgl. der AfA gibt.
-###### Das Script is noch Work-In-Progress und nur für private Zwecke gedacht.
+##### Das Script ist momentan nur für Österreich gedacht, da es spezifische Regelungen bezgl. der AfA gibt.
+###### Das Script ist noch Work-In-Progress und nur für private Zwecke gedacht.
 ###### Es besteht kein rechtlicher Anspruch auf die Richtigkeit des Scripts.
 &nbsp;
 ## Hinweise zur Benutzung:
 
 Stand 21.02.2020:
 Quellen:
-[LBG Österreich - Steuerreform 2020/23](https://www.lbg.at/servicecenter/lbg_steuertipps_praxis/steuerreform_2020_23_einkommensteuer_lohnsteuertarif_mitarbeitererfolgsbeteiligung_gewinngrundfreibetrag_gwg_kleinunternehmerpauschale_werbungskostenpauschale_/index_ger.html)
+[LBG Österreich - Steuerreform 2020/23](https://www.lbg.at/servicecenter/lbg_steuertipps_praxis/steuerreform_2020_23_einkommensteuer_lohnsteuertarif_mitarbeitererfolgsbeteiligung_gewinngrundfreibetrag_gwg_kleinunternehmerpauschale_werbungskostenpauschale_/index_ger.html) &nbsp;
 [AK Österreich - Werbungskosten](https://www.arbeiterkammer.at/beratung/steuerundeinkommen/steuertipps/Werbungskosten.html)
 
 Gegenstände die einen Kaufpreis von weniger als dem angegebenen Wert haben, werden sofort im ersten Jahr komplett abgeschrieben.
@@ -23,7 +23,7 @@ Gegenstände die einen Kaufpreis von weniger als dem angegebenen Wert haben, wer
 ## Roadmap für die Zukunft:
 
 * Variablen in eine Config-Datei schreiben und nicht hardcoded im Code belassen.
-* PDFs generieren um die AfA-Berechnung abzuspeichern und diese aufzubewahren.
+* PDFs generieren um die AfA-Berechnung inkl. der Rechnung abzuspeichern und diese aufzubewahren.
 * Datenbank zum Speichern bereits durchgeführter AfA-Berechnungen.
-* GUI zu einfachen bedienen für nicht versierte Personen.
+* GUI zum einfacheren Bedienen für nicht versierte Personen.
 
