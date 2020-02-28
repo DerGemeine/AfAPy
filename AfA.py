@@ -1,30 +1,18 @@
 import time
 #Volljahres Berechnung (VJB) also von Januar bis zum Juni.
 VJB = int(6)
-#Halbjahres Berechung (=HJB) also von Juli bis zum Dezember.
+#Halbjahres Berechung (HJB) also von Juli bis zum Dezember.
 HJB = int(7)
+#Variablen für die Obergenzen der geringwertigen Wirtschaftsgüter in den kommen Jahren und die momentane
+#geringwertige Wirtschaftsgüter Obergrenze 2019/2020/2021 = gWgO2019/gWgO2020/gWgO2021
+gWgO2019 = int(400)
+gWgO2020 = int(800)
+gWgO2021 = int(1000)
 
 
 print("Geben Sie den Wert des Gegenstandes (mit MwSt.) ein, dessen jährliche Abschreibung berechnet werden soll. Den Punkt als Kommatrennzeichen verwenden.")
 # Variablen kürzen wir mit den jeweiligen Anfangsbuchstaben der Beschreibung ab, sprich Wert des Gegenstandes = WdG.
 WdG = float(input("Bitte geben Sie den Wert ein: "))
-print("Geben Sie den Prozentsatz ein, zu welchem der Gegenstand für gewerbliche Zwecke genutzt wird.")
-#Prozentsatz der gewerblichen Nutzung = PdgN.
-PdgN = float(input("Bitte geben Sie den Prozentsatz ein: "))
-
-#Die AfA wird berechnet in dem der Preis des Gegenstandes durch 100 geteilt wird und anschlißend mit dem Prozentsatz der gerwerblichen Nutzung mutlipliziert wird.
-#AfA Insgesamt = AfAInsG
-AfAInsG = ((WdG / 100) * PdgN)
-
-#print("Dies ergibt eine gesamte AfA in Euro:  ") ---!---> Wichtig zum Schluss einbauen
-#Aufrunden der AfA auf zwei Kommastellen.
-#AfA Insgesamt gerrundet = AfAInsGg
-AfAInsGg = ("%.2f" % AfAInsG)
-print
-
-print("Geben Sie die Nutzungdauer in vollen Jahren an z.B. 3")
-#Nutzungsdauer in Jahren = NiJ
-NiJ = int(input("Bitte geben Sie die Nutzungsdauer ein: "))
 
 print("Geben Sie das Kaufjahr in normaler Schreibweise an, z.B. 2020")
 #Vollständiges Kaufjahr = VKJ
@@ -34,29 +22,69 @@ print("Geben Sie den Kaufmonat in numerischer Schreibweise an, z.B. 7 für Juli"
 #Numerischer Kaufmonat
 NKM = int(input("Bitte geben sie den Kaufmonat ein: "))
 
+print("Geben Sie den Prozentsatz ein, zu welchem der Gegenstand für gewerbliche Zwecke genutzt wird.")
+#Prozentsatz der gewerblichen Nutzung = PdgN.
+PdgN = float(input("Bitte geben Sie den Prozentsatz ein: "))
+
+print("Geben Sie die Nutzungdauer in vollen Jahren an z.B. 3")
+#Nutzungsdauer in Jahren = NiJ
+NiJ = int(input("Bitte geben Sie die Nutzungsdauer ein: "))
+
+#Die AfA wird berechnet in dem der Preis des Gegenstandes durch 100 geteilt wird und anschlißend mit dem Prozentsatz der gerwerblichen Nutzung mutlipliziert wird.
+#AfA Insgesamt = AfAInsG
+AfAInsG = ((WdG / 100) * PdgN)
+#Aufrunden der gesamten AfA auf zwei Kommastellen.
+#die gesamte AfA gerundet = VJAfAg
+AfAInsGg = ("%.2f" % AfAInsG)
+
+#Die AfA des Volljahres berechnen, AfAInsG durch die Nutzungsdauer in Jahren.
+#Volljahres AfA = VJAfA
+VJAfA = (AfAInsG / NiJ)
+#Aufrunden der Volljahres AfA auf zwei Kommastellen.
+#Volljahres AfA gerundet = VJAfAg
+VJAfAg = ("%.2f" % VJAfA)
+
+#Addition des Kaufjahres mit der Nutzungsdauer um das Enddatum der Abschreibung zu ermitteln, sowie die 
+#Enddatum der Abschreibung = EdA
+EdA = int(VKJ + NiJ)
+
+#NiJ in einer Liste = list_NiJ
+list_NiJ = list(range(VKJ, EdA))
+
+#Wenn der Wert des Gegenstandes weniger als 400/800/1000 ist und der Gegenstand im Jahre 2019/2020/2019 gekauft wurde, dann gib die gesamte AfA gleich gerundet aus.
+if (WdG < gWgO2019 and VKJ == 2019) or (WdG < gWgO2020 and VKJ == 2020) or (WdG < gWgO2021 and VKJ == 2021):
+    print("Die komplette Abschreibung findet im Jahr", VKJ, 'in der Höhe von', AfAInsGg, 'statt.')
+
 #Wenn der Kaufmonat kleiner oder gleich groß ist wie der Juni (6. Monat), dann berechne die volle AfA (Volljahres).
-if NKM <= VJB:
-    #Die AfA des Volljahres berechnen, AfAInsG durch die Nutzungsdauer in Jahren.
-    #Volljahres AfA = VJAfA
-    VJAfA = (AfAInsG / NiJ)
-    #Aufrunden der Volljahres AfA auf zwei Kommastellen.
-    #Volljahres AfA gerrundet = VJAfAg
-    VJAfAg = ("%.2f" % VJAfA)
+elif NKM <= VJB:
 
-    #Addition des Kaufjahres mit der Nutzungsdauer um das Enddatum der Abschreibung zu ermitteln, sowie die 
-    #Enddatum der Abschreibung = EdA
-    EdA = int(VKJ + NiJ)
-    list_EdA = list(range(VKJ, EdA))
-    [print("AfA im Jahr", i, 'beträgt: ', VJAfAg) for i in list_EdA]
+    #Für jedes Jahr der Nutzungdauer, drucke eine neue Zeile mit dem jeweiligen Jahr sowie der gerundeten Volljahres AfA.
+    [print("AfA im Jahr", i, 'beträgt: €', VJAfAg) for i in list_NiJ]
 
- #Wenn der Kaufmonat größer oder gleich groß ist wie der Juli (7. Monat), dann berechne die halbe AfA (Halbjahres).       
+#Wenn der Kaufmonat größer oder gleich groß ist wie der Juli (7. Monat), dann berechne die halbe AfA (Halbjahres) und dann die Ganzjahres.       
 elif NKM >= HJB:
-    #Die AfA des ersten sowie letzten Halbjahres berechnen, AfAInsG durch die Nutzungsdauer in Jahren.
+    #Die AfA des ersten sowie des letzten Halbjahres berechnen, AfAInsG durch die Nutzungsdauer in Jahren, das Ergebnis durch 2.
     #Halbjahres AfA = HJAfA
     VJAfA = ((AfAInsG / NiJ) / 2)
+    #Aufrunden der Halbjahres AfA auf zwei Kommastellen.
+    #Halbjahres AfA gerrundet = HJAfAg
     HJAfAg = ("%.2f" % VJAfA)
-    print(HJAfAg)
-time.sleep(10)
+    print("AfA im Jahr", VKJ, 'beträgt: €', HJAfAg)
+    #Entfernung des ersten und letzten Eintrages der list_EdA, da diese Jahre nicht mit der vollen AfA berechnet werden
+    list_NiJ.pop(0)
+    #NiJ_letztes = list_NiJ.pop()
+    #Für jedes Jahr der übrig gebliebenen Nutzungdauer, drucke eine neue Zeile mit dem jeweiligen Jahr sowie der gerundeten Volljahres AfA.
+    [print("AfA im Jahr", i, 'beträgt: €', VJAfAg) for i in list_NiJ]
+    #Die Ausgabe der letzten Halbjahres AfA
+    #In diesem Fall wird das EdA um ein Jahr erhöht, da sich die eigentliche Volljahres AfA auf zwei Jahre aufteilt.
+    print("AfA im Jahr", EdA+1, 'beträgt: €', HJAfAg)
+    
+print("Die gesamte AfA beträgt dabei: €", AfAInsGg) 
+time.sleep(5)
+
+
+
+
 
 
 
