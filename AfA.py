@@ -72,14 +72,15 @@ elif NKM >= HJB:
     print("AfA im Jahr", VKJ, 'beträgt: €', HJAfAg)
     #Entfernung des ersten und letzten Eintrages der list_EdA, da diese Jahre nicht mit der vollen AfA berechnet werden
     list_NiJ.pop(0)
-    #NiJ_letztes = list_NiJ.pop()
     #Für jedes Jahr der übrig gebliebenen Nutzungdauer, drucke eine neue Zeile mit dem jeweiligen Jahr sowie der gerundeten Volljahres AfA.
     [print("AfA im Jahr", i, 'beträgt: €', VJAfAg) for i in list_NiJ]
     #Die Ausgabe der letzten Halbjahres AfA
     #In diesem Fall wird das EdA um ein Jahr erhöht, da sich die eigentliche Volljahres AfA auf zwei Jahre aufteilt.
     print("AfA im Jahr", EdA+1, 'beträgt: €', HJAfAg)
     
-print("Die gesamte AfA beträgt dabei: €", AfAInsGg) 
+#Zum Schluss geben wir in jedem Fall die gesamte über die ganze Nutzungsdauer aus.    
+print("Die gesamte AfA beträgt dabei: €", AfAInsGg)
+
 time.sleep(5)
 
 
