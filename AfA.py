@@ -3,7 +3,7 @@ import time
 VJB = int(6)
 #Halbjahres Berechung (HJB) also von Juli bis zum Dezember.
 HJB = int(7)
-#Variablen für die Obergenzen der geringwertigen Wirtschaftsgüter in den kommen Jahren und die momentane
+#Variablen für die Obergenzen der geringwertigen Wirtschaftsgüter in den kommen Jahren und die momentane Obergrenze, kommt später in eine config file.
 #geringwertige Wirtschaftsgüter Obergrenze 2019/2020/2021 = gWgO2019/gWgO2020/gWgO2021
 gWgO2019 = int(400)
 gWgO2020 = int(800)
