@@ -2,7 +2,7 @@
 ### AfA mit diesem Python3 Script berechnen. 
 &nbsp;
 ##### Das Script ist momentan nur für Österreich gedacht, da es spezifische Regelungen bezgl. der AfA gibt.
-###### Das Script ist noch Work-In-Progress und nur für private Zwecke gedacht.
+###### Das Script ist noch Work-In-Progress und nur für private Zwecke gedacht, ebenso sind die Gegenstandswerte mit der MwSt. anzugeben.
 ###### Es besteht kein rechtlicher Anspruch auf die Richtigkeit des Scripts.
 &nbsp;
 ## Hinweise zur Benutzung:
