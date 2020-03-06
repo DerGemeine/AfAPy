@@ -1,4 +1,7 @@
+'''Imports'''
 import time
+
+'''Hardcode Variablen'''
 #Volljahres Berechnung (VJB) also von Januar bis zum Juni.
 VJB = int(6)
 #Halbjahres Berechung (HJB) also von Juli bis zum Dezember.
@@ -9,26 +12,61 @@ gWgO2019 = int(400)
 gWgO2020 = int(800)
 gWgO2021 = int(1000)
 
+'''Funktionen'''
+## Mit dieser Funktion nehmen wir eine Eingabeüberprüfung vor, nur Eingaben die int sind sowie nicht negativ.
+##Eingabeüberprüfung int nicht negativ = Eueinn
+def Eueinn(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+        except ValueError:
+            print("Keine Zahl angegeben.")
+            continue
+
+        if value < 0:
+            print("Eingabe ist negativ.")
+            continue
+        else:
+            break
+    return value
+
+## Mit dieser Funktion nehmen wir eine Eingabeüberprüfung vor, nur Eingaben die float sind sowie nicht negativ.
+## Eingabeüberprüfung float nicht negativ = Euefnn
+def Euefnn(prompt):
+    while True:
+        try:
+            value = float(input(prompt))
+        except ValueError:
+            print("Keine Zahl angegeben.")
+            continue
+
+        if value < 0:
+            print("Eingabe ist negativ.")
+            continue
+        else:
+            break
+    return value
+
 
 print("Geben Sie den Wert des Gegenstandes (mit MwSt.) ein, dessen jährliche Abschreibung berechnet werden soll. Den Punkt als Kommatrennzeichen verwenden.")
 # Variablen kürzen wir mit den jeweiligen Anfangsbuchstaben der Beschreibung ab, sprich Wert des Gegenstandes = WdG.
-WdG = float(input("Bitte geben Sie den Wert ein: "))
+WdG = Euefnn("Bitte geben Sie den Wert des Gegenstandes ein: ")
 
-print("Geben Sie das Kaufjahr in normaler Schreibweise an, z.B. 2020")
+print("Geben Sie das Kaufjahr in normaler Schreibweise an, z.B. 2020.")
 #Vollständiges Kaufjahr = VKJ
-VKJ = int(input("Bitte geben Sie das Kaufjahr ein: "))
+VKJ = Eueinn("Bitte geben Sie das Kaufjahr ein: ")
 
-print("Geben Sie den Kaufmonat in numerischer Schreibweise an, z.B. 7 für Juli")
+print("Geben Sie den Kaufmonat in numerischer Schreibweise an, z.B. 7 für Juli.")
 #Numerischer Kaufmonat
-NKM = int(input("Bitte geben sie den Kaufmonat ein: "))
+NKM = Eueinn("Bitte geben sie den Kaufmonat ein: ")
 
-print("Geben Sie den Prozentsatz ein, zu welchem der Gegenstand für gewerbliche Zwecke genutzt wird.")
+print("Geben Sie den Prozentsatz ein, zu welchem der Gegenstand für gewerbliche Zwecke genutzt wird, z.B. 40.")
 #Prozentsatz der gewerblichen Nutzung = PdgN.
-PdgN = float(input("Bitte geben Sie den Prozentsatz ein: "))
+PdgN = Euefnn("Bitte geben Sie den Prozentsatz ein: ")
 
-print("Geben Sie die Nutzungdauer in vollen Jahren an z.B. 3")
+print("Geben Sie die Nutzungdauer in vollen Jahren an z.B. 3.")
 #Nutzungsdauer in Jahren = NiJ
-NiJ = int(input("Bitte geben Sie die Nutzungsdauer ein: "))
+NiJ = Eueinn("Bitte geben Sie die Nutzungsdauer ein: ")
 
 #Die AfA wird berechnet in dem der Preis des Gegenstandes durch 100 geteilt wird und anschlißend mit dem Prozentsatz der gerwerblichen Nutzung mutlipliziert wird.
 #AfA Insgesamt = AfAInsG
@@ -81,7 +119,7 @@ elif NKM >= HJB:
 #Zum Schluss geben wir in jedem Fall die gesamte über die ganze Nutzungsdauer aus.    
 print("Die gesamte AfA beträgt dabei: €", AfAInsGg)
 
-time.sleep(5)
+time.sleep(10)
 
 
 
