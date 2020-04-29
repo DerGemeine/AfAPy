@@ -1,16 +1,20 @@
 '''Imports'''
 import time
+import configparser
 
-'''Hardcode Variablen'''
+'''Config'''
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 #Volljahres Berechnung (VJB) also von Januar bis zum Juni.
-VJB = int(6)
+VJB = int(config['Monate']['VJB'])
 #Halbjahres Berechung (HJB) also von Juli bis zum Dezember.
-HJB = int(7)
+HJB = int(config['Monate']['HJB'])
 #Variablen für die Obergenzen der geringwertigen Wirtschaftsgüter in den kommen Jahren und die momentane Obergrenze, kommt später in eine config file.
 #geringwertige Wirtschaftsgüter Obergrenze 2019/2020/2021 = gWgO2019/gWgO2020/gWgO2021
-gWgO2019 = int(400)
-gWgO2020 = int(800)
-gWgO2021 = int(1000)
+gWgO2019 = int(config['gWgO']['gWgO2019'])
+gWgO2020 = int(config['gWgO']['gWgO2020'])
+gWgO2021 = int(config['gWgO']['gWgO2021'])
 
 '''Funktionen'''
 ## Mit dieser Funktion nehmen wir eine Eingabeüberprüfung vor, nur Eingaben die int sind sowie nicht negativ.
@@ -120,11 +124,3 @@ elif NKM >= HJB:
 print("Die gesamte AfA beträgt dabei: €", AfAInsGg)
 
 time.sleep(10)
-
-
-
-
-
-
-
-
