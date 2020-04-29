@@ -22,7 +22,7 @@ Gegenstände die einen Kaufpreis von weniger als dem angegebenen Wert haben, wer
 &nbsp;
 ## Roadmap für die Zukunft:
 
-* Variablen in eine Config-Datei schreiben und nicht hardcoded im Code belassen.
+* ~~Variablen in eine Config-Datei schreiben und nicht hardcoded im Code belassen.~~
 * PDFs generieren um die AfA-Berechnung inkl. der Rechnung abzuspeichern und diese aufzubewahren.
 * Datenbank zum Speichern bereits durchgeführter AfA-Berechnungen.
 * GUI zum einfacheren Bedienen für nicht versierte Personen.
